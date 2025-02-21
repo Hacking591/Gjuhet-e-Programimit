@@ -91,23 +91,22 @@
     </div>
 
     <script>
-        function sendEmail() {
-            // Merr të dhënat nga formulari
-            var firstName = document.getElementById('firstName').value;
-            var lastName = document.getElementById('lastName').value;
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
-
-            // Adresa e e-mailit të destinacionit
-            var recipientEmail = "email@example.com"; // Zëvendësoje me e-mailin tënd
-
-            // Titulli dhe trupi i mesazhit
-            var subject = "Kontakti nga webfaqja";
-            var body = "Emri: " + firstName + "\nMbiemri: " + lastName + "\nE-mail: " + email + "\n\nMesazhi:\n" + message;
-
-            // Krijon lidhjen mailto dhe e hap atë
-            window.location.href = "mailto:gertlula2003@gmail.com" + recipientEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        }
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Parandalon dërgimin e formës, pasi po përdorim JavaScript
+  
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+  
+    const subject = `Kontakti nga ${name}`;
+    const body = `Emri: ${name}\nEmail: ${email}\nMesazhi:\n${message}`;
+  
+    // Krijon URL për dërgimin e email-it
+    const mailtoLink = `mailto:gertlula2003@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  
+    // Hap klientin e emailit
+    window.location.href = mailtoLink;   
+    }); 
     </script>
 
 </body>
