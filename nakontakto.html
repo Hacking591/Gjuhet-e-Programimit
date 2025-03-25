@@ -19,45 +19,72 @@
 
         .contact-form {
             background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             display: inline-block;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .contact-form:hover {
+            transform: scale(1.05);
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
         }
 
         input, textarea {
             width: 100%;
-            padding: 10px;
-            margin: 5px 0 15px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 8px 0 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
         }
 
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             width: 100%;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: #45a049;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
         }
     </style>
 </head>
@@ -91,22 +118,21 @@
     </div>
 
     <script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Parandalon dërgimin e formës, pasi po përdorim JavaScript
-  
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-  
-    const subject = `Kontakti nga ${name}`;
-    const body = `Emri: ${name}\nEmail: ${email}\nMesazhi:\n${message}`;
-  
-    // Krijon URL për dërgimin e email-it
-    const mailtoLink = `mailto:gertlula2003@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  
-    // Hap klientin e emailit
-    window.location.href = mailtoLink;   
-    }); 
+        function sendEmail() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+          
+            const subject = `Kontakti nga ${firstName} ${lastName}`;
+            const body = `Emri: ${firstName} ${lastName}\nEmail: ${email}\nMesazhi:\n${message}`;
+          
+            // Krijon URL për dërgimin e email-it
+            const mailtoLink = `mailto:gertlula2003@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          
+            // Hap klientin e emailit
+            window.location.href = mailtoLink;
+        }
     </script>
 
 </body>
